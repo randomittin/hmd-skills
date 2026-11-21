@@ -1,0 +1,9 @@
+# the receipt `heimdall-repo-checks run` writes: build output, never committed (the declaration beside it, repo-checks.json, is)
+.heimdall/receipts/
+
+# designmatch runtime state and npm artefacts; a wip checkpoint once committed skills/designmatch/.heimdall, so the nested form is ignored at any depth
+skills/**/.heimdall/
+.designmatch/
+node_modules/
+
+.DS_Store
