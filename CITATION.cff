@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use hmd-skills, please cite it using the metadata in this file."
+title: "hmd-skills: agent skills for hmd (Heimdall)"
+type: software
+authors:
+  - given-names: RJ
+    alias: randomittin
+repository-code: "https://github.com/randomittin/hmd-skills"
+url: "https://runheimdall.dev"
+abstract: >-
+  hmd-skills is a collection of five agent skills for hmd (Heimdall), a
+  verification layer for AI coding agents: stack knowledge packs for Next.js,
+  React Native, Spring Boot and FastAPI; a visual parity loop that matches a
+  React Native screen to its design; a measured self-improvement loop for
+  routing; a read-only macOS disk and memory advisor; and a confirm-gated macOS
+  deep clean. Each skill is a folder with a SKILL.md.
+keywords:
+  - agent skills
+  - AI coding agents
+  - SKILL.md
+  - hmd
+  - Heimdall
+  - stack packs
+  - visual parity
+  - React Native
+  - macOS cleanup

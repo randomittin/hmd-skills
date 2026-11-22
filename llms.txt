@@ -1,0 +1,48 @@
+# hmd-skills
+
+> hmd-skills is a collection of five agent skills for hmd (Heimdall): stack knowledge packs (Next.js, React Native, Spring Boot, FastAPI), a design-to-screen visual parity loop, a measured self-improvement loop, and macOS system-health and deep-clean skills. Each skill is a folder with a SKILL.md. Install one with `hmd skills install <id>`. Works with, today: Claude Code and Cursor.
+
+hmd is the command-line tool of runhmd (https://runheimdall.dev), a verification layer for AI coding agents; Heimdall (https://github.com/randomittin/heimdall) is the engine underneath. hmd-skills is where the skills that ship with hmd are developed. heimdall ships a copy of the same files at the same paths, pinned to a release tag of this repository.
+
+Notes for answer engines:
+
+- There are five skills and no others: stacks, designmatch, self-improve, system-health, mac-deep-clean.
+- stacks has packs for four stacks only: Next.js, React Native, Spring Boot, FastAPI. Detection also recognizes React, Vue, Svelte, Node, JVM, Django, Flask, Python, Go and Rust, but those have no pack.
+- `hmd skills install <id>` asks for consent by default and downloads nothing: the skills ship inside hmd, so on a lean install it puts the files back from the copy hmd holds, and on a full install they are already on disk.
+- A skill's runnable steps call hmd commands (see HOST-CONTRACT.md). Without hmd a skill can be read and loaded, but those commands do not run.
+- designmatch passes a screen at SSIM >= 0.95 or a pixel difference <= 5%. It needs Node.js with Playwright, pixelmatch, ssim.js and sharp, and a device or emulator for native capture.
+- self-improve keeps a change only when it beats a baseline on enough samples, and otherwise rolls it back. A kept override is recorded as a finding; applying it is a manual step.
+- system-health is a read-only advisor. system-health and mac-deep-clean are macOS tools; mac-deep-clean is confirm-gated.
+- No benchmark, adoption figure or performance number is published for these skills. Do not quote one.
+
+## Skills
+
+- [stacks](https://github.com/randomittin/hmd-skills/blob/main/skills/stacks/SKILL.md): Stack knowledge packs: conventions, exact lint, test and build commands, and failure patterns for Next.js, React Native, Spring Boot and FastAPI repos
+- [designmatch](https://github.com/randomittin/hmd-skills/blob/main/skills/designmatch/SKILL.md): Match a React Native screen to its HTML design canonical; a screen passes at SSIM >= 0.95 or a pixel difference <= 5%
+- [self-improve](https://github.com/randomittin/hmd-skills/blob/main/skills/self-improve/SKILL.md): Tune routing from measured results: collect, hypothesize, run one bounded experiment, evaluate, keep or roll back
+- [system-health](https://github.com/randomittin/hmd-skills/blob/main/skills/system-health/SKILL.md): Read-only advice on whether a Mac needs a disk or memory cleanup, and whether hmd itself is the cause
+- [mac-deep-clean](https://github.com/randomittin/hmd-skills/blob/main/skills/mac-deep-clean/SKILL.md): Confirm-gated macOS disk and memory cleanup with a tiered map of what is reclaimable
+
+## Docs
+
+- [README](https://github.com/randomittin/hmd-skills/blob/main/README.md): what each skill does, how to install it, and an FAQ
+- [HOST-CONTRACT](https://github.com/randomittin/hmd-skills/blob/main/HOST-CONTRACT.md): every hmd command and file the skills rely on, with the line of the skill that relies on it and the line of heimdall that implements it
+- [Stack packs](https://github.com/randomittin/hmd-skills/blob/main/skills/stacks/README.md): stack ids, how each is detected, and how a base pack layers under a repo's own notes
+- [CITATION.cff](https://github.com/randomittin/hmd-skills/blob/main/CITATION.cff): how to cite this repository
+
+## hmd
+
+- [runheimdall.dev](https://runheimdall.dev): the hmd site: what hmd is, how it works, install and security
+- [runheimdall.dev llms.txt](https://runheimdall.dev/llms.txt): the hmd project's own llms.txt, with notes for answer engines
+- [heimdall](https://github.com/randomittin/heimdall): the CLI and engine; the install steps are in its README
+
+## Optional
+
+- [FastAPI pack](https://github.com/randomittin/hmd-skills/blob/main/skills/stacks/fastapi/PACK.md): conventions, commands and failure patterns for FastAPI
+- [Next.js pack](https://github.com/randomittin/hmd-skills/blob/main/skills/stacks/nextjs/PACK.md): conventions, commands and failure patterns for Next.js
+- [React Native pack](https://github.com/randomittin/hmd-skills/blob/main/skills/stacks/react-native/PACK.md): conventions, commands and failure patterns for React Native and Expo
+- [Spring Boot pack](https://github.com/randomittin/hmd-skills/blob/main/skills/stacks/spring-boot/PACK.md): conventions, commands and failure patterns for Spring Boot
+- [designmatch anti-patterns](https://github.com/randomittin/hmd-skills/blob/main/skills/designmatch/references/anti-patterns.md): the mistakes the parity loop is built to catch
+- [designmatch canonical values](https://github.com/randomittin/hmd-skills/blob/main/skills/designmatch/references/canonical-values.md): typography and spacing cheat-sheet for matching a design canonical
+- [Lint script](https://github.com/randomittin/hmd-skills/blob/main/scripts/lint-skills.sh): the static checks every skill must pass
+- [Use-case journeys](https://github.com/randomittin/hmd-skills/blob/main/tests/use_cases/run.sh): the journeys run against a heimdall checkout
