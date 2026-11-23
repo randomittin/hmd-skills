@@ -115,3 +115,7 @@ The history of each skill was carried over from heimdall with `git filter-repo`,
 ## About
 
 hmd-skills is maintained by RJ ([randomittin](https://github.com/randomittin)) as part of [hmd](https://runheimdall.dev). Cite it with [`CITATION.cff`](CITATION.cff); a structured summary for language models is in [`llms.txt`](llms.txt).
+
+## License
+
+MIT. See [LICENSE](LICENSE).
