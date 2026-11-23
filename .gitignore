@@ -7,3 +7,7 @@ skills/**/.heimdall/
 node_modules/
 
 .DS_Store
+
+# hmd session runtime state (presence, wall, roster caches, team secret): written by a live hmd session, never committed
+.heimdall/*
+!.heimdall/repo-checks.json
